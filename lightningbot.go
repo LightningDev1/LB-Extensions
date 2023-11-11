@@ -45,6 +45,6 @@ type ConsoleMessage interface {
 // 		AddInfo("Key", "Value").
 // 		AddInfoConditional("Key", value, value != "").
 // 		Show()
-func NewConsoleMessage(message string) ConsoleMessage {
+func NewConsoleMessage() ConsoleMessage {
 	return nil
 }
