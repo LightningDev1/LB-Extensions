@@ -58,15 +58,31 @@ func NewConsoleMessage() ConsoleMessage { return nil }
 
 // Embed is a utility to send embeds to Discord.
 type Embed interface {
+	// SetTitle sets the title of the embed
 	SetTitle(title string) Embed
+
+	// SetDescription sets the description of the embed
 	SetDescription(description string) Embed
+
+	// SetSubtext sets the subtext of the embed
 	SetSubtext(subtext string) Embed
+
+	// AddField adds a field to the embed
 	AddField(name, value string) Embed
+
+	// SetFooter sets the footer of the embed
 	SetFooter(footer string) Embed
+
+	// SetImage sets the image of the embed
 	SetImage(imageURL string) Embed
+
+	// SetAuthor sets the author of the embed
 	SetAuthor(author string) Embed
 
+	// Send sends the embed to Discord
 	Send(ctx *dgc.Ctx) []*discordgo.Message
+
+	// SendWebhook sends the embed to a webhook
 	SendWebhook(webhookURL string)
 }
 
