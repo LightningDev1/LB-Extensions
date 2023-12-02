@@ -23,6 +23,158 @@ func Notification(message string) {}
 //	lightningbot.LogError("My error")
 func LogError(message string) {}
 
+// Config is the configuration of LightningBot.
+type Config struct {
+	Account struct {
+		LightningBot struct {
+			Username string
+			Password string
+		}
+		Discord struct {
+			Token string
+		}
+	}
+	Notifications struct {
+		Enabled bool
+	}
+	Snipers struct {
+		Blacklist       []string
+		ServerBlacklist []string
+		GiveawaySniper  struct {
+			Sleep      int
+			Enabled    bool
+			CustomBots []string
+		}
+		NitroSniper      bool
+		PrivnoteSniper   bool
+		MultiTokenSniper bool
+		Tokens           []string
+	}
+	Webhooks struct {
+		NitroSniper      string
+		GiveawaySniper   string
+		SelfbotDetection string
+		StaffDetection   string
+		Notifiers        string
+		PingDetection    string
+		Misc             string
+		Sessions         string
+	}
+	Events struct {
+		BanNotifier           bool
+		DMNotifier            bool
+		DMEditNotifier        bool
+		DMDeleteNotifier      bool
+		DMTypingNotifier      bool
+		MessageDeleteNotifier bool
+		DiscordStaffDetection bool
+		GhostPingDetection    bool
+		SelfbotDetection      bool
+		TicketNotifier        bool
+		SessionConnected      bool
+		SessionDisconnected   bool
+	}
+	RPC struct {
+		Enabled    bool
+		ClientID   string
+		State      string
+		Details    string
+		Time       bool
+		LargeImage string
+		LargeText  string
+		SmallImage string
+		SmallText  string
+		Invitable  bool
+		Buttons    []struct {
+			Label string
+			URL   string
+		}
+	}
+	Activity struct {
+		Enabled        bool
+		ActivityType   string
+		Type           string
+		ClientID       string
+		Name           string
+		State          string
+		Details        string
+		Invitable      bool
+		Time           bool
+		StreamingURL   string
+		LargeImage     string
+		LargeImageText string
+		SmallImage     string
+		SmallImageText string
+		Button1Label   string
+		Button1URL     string
+		Button2Label   string
+		Button2URL     string
+	}
+	UI struct {
+		Theme               string
+		HideToSystemTray    bool
+		RunOnStartup        bool
+		RunSelfbotOnStartup bool
+	}
+	Selfbot struct {
+		CommandPrefix        string
+		CommandMode          string
+		Title                string
+		Footer               string
+		DeleteResponses      bool
+		DeleteResponsesDelay int
+		DeleteCommands       bool
+		MobileFriendly       bool
+		Client               string
+	}
+	Protections struct {
+		AntiPhishing      bool
+		AntiFriendRequest bool
+		AntiMassDM        bool
+		ServerProtections struct {
+			AntiInvite       bool
+			AntiSpam         bool
+			AntiUpper        bool
+			AntiDelete       bool
+			ProtectedServers []string
+		}
+	}
+	AFK struct {
+		Enabled         bool
+		Delay           int
+		RandomDelay     bool
+		OnDM            bool
+		OnPing          bool
+		MustBeInactive  bool
+		InactiveTimeout int
+		Reply           bool
+		Typing          bool
+		Message         string
+		AI              bool
+	}
+	Sharing struct {
+		SharedUsers            []string
+		SharedCategories       []string
+		SharedCommands         []string
+		ShareAll               bool
+		BlockDangerousCommands bool
+	}
+}
+
+// Save saves the current configuration of LightningBot. Example usage:
+//
+//		config, err := lightningbot.GetConfig()
+//
+//	 err = config.Save()
+func (c Config) Save() error { return nil }
+
+// GetConfig gets the current configuration of LightningBot. Example usage:
+//
+//	config, err := lightningbot.GetConfig()
+//
+//	fmt.Println(config)
+func GetConfig() (Config, error) { return Config{}, nil }
+
 // ConsoleMessage is a utility to show information in the console.
 type ConsoleMessage interface {
 	// SetTitle sets the title of the message
