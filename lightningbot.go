@@ -47,6 +47,16 @@ type Config struct {
 		}
 		NitroSniper      bool
 		PrivnoteSniper   bool
+		PokeTwoSniper  struct {
+			Enabled      bool
+			Channels     []string
+			Sleep        int
+			RandomSleep  bool
+			Timeout      int
+			Typing       bool
+			CatchRate    int
+			FakeActivity bool
+		}
 		MultiTokenSniper bool
 		Tokens           []string
 	}
@@ -73,22 +83,6 @@ type Config struct {
 		TicketNotifier        bool
 		SessionConnected      bool
 		SessionDisconnected   bool
-	}
-	RPC struct {
-		Enabled    bool
-		ClientID   string
-		State      string
-		Details    string
-		Time       bool
-		LargeImage string
-		LargeText  string
-		SmallImage string
-		SmallText  string
-		Invitable  bool
-		Buttons    []struct {
-			Label string
-			URL   string
-		}
 	}
 	Activity struct {
 		Enabled        bool
@@ -126,6 +120,7 @@ type Config struct {
 		DeleteCommands       bool
 		MobileFriendly       bool
 		Client               string
+		CommandAliases       map[string]string
 	}
 	Protections struct {
 		AntiPhishing      bool
@@ -159,6 +154,7 @@ type Config struct {
 		ShareAll               bool
 		BlockDangerousCommands bool
 	}
+	Tags map[string]string
 }
 
 // Save saves the current configuration of LightningBot. Example usage:
